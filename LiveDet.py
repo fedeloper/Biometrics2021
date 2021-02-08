@@ -22,7 +22,7 @@ loaded_model.eval()
 face_cascade = cv2.CascadeClassifier("C:/Users/User/Desktop/Video_test/haarcascade_frontalface_default.xml")
 
 
-cap = cv2.VideoCapture("C:/Users/User/Desktop/Video_test/Mattia_test_01.mp4")
+cap = cv2.VideoCapture("C:/Users/User/Desktop/Video_test/Mattia_test_04.mp4")
 
 count = 1
 

@@ -14,7 +14,7 @@ frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 
 # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-out = cv2.VideoWriter('C:/Users/User/Desktop/Video_test/Mattia_test_01.mp4',cv2.VideoWriter_fourcc('M','J','P','G'), 25, (frame_width,frame_height))
+out = cv2.VideoWriter('C:/Users/User/Desktop/Video_test/Mattia_test_04.mp4',cv2.VideoWriter_fourcc('M','J','P','G'), 25, (frame_width,frame_height))
 
 while(True):
   ret, frame = cap.read()
