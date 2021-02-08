@@ -25,34 +25,13 @@ def feats_extract(face_crop, model, device):
     coord = np.vstack(np.split(test_predictions[0],15))
 
     for (x, y) in coord:
-            cv2.circle(test_face_copy, (x, y), 2, (0, 255, 0), -1)
+            cv2.circle(test_face_copy, (x, y), 2, (0, 255, 0), -1) # the coordinates are plotted directly onto the cropped image
 
     cv2.imshow("Prova", test_face_copy)
-    """
-    for face in face_crop:
-        # it is aready a grayscaled image
-        #face = Image.fromarray(face)
-        ##face_96 = face.resize((96,96), Image.ANTIALIAS)
 
-        ##test_face = np.array(face_96)
-        ##test_face_copy = test_face.copy()
-        cv2.imshow("Prova", face)
-        
-        # We convert it to torch domain so we can use it in our model
-        test_face_torch = torch.from_numpy(test_face).float().to(device)
-        test_face = test_face_torch.reshape(1,1,96,96)
 
-        # Using the model to predict the coordinates in the face we are dealing in this iteration
-        test_predictions = model(test_face)
-        test_predictions = test_predictions.cpu().data.numpy()
+    # Le due classi qui sotto sono obsolete, le mantengo perché potrebbero risultare utili in futuro
 
-        coord = np.vstack(np.split(test_predictions[0],15))
-
-        for (x,y) in coord:
-            cv2.circle(test_face_copy, (x,y), 2, (255,0,0), -1)
-
-        cv2.imshow("FKS", test_face_copy)
-        """    
 class FaceDetection():
     
     def __init__(self, path2img = 'AbccEAc.jpg', path2class = 'haarcascade_frontalface_default.xml'):
