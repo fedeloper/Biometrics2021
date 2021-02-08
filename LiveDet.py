@@ -16,6 +16,9 @@ loaded_model.eval()
 
 
 
+
+
+
 face_cascade = cv2.CascadeClassifier("C:/Users/User/Desktop/Video_test/haarcascade_frontalface_default.xml")
 
 
@@ -30,16 +33,18 @@ while cap.isOpened() & count<30000:
     if ret==True:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        # Detects faces of different sizes in the input image 
-        faces = FaceDetection(gray).detection()#face_cascade.detectMultiScale(frame, 1.1, 6)
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=6)
 
+        
         # for each detected faces, find the landmark
-        for (i, rect) in enumerate(faces):
-            shape = 
+        for (x,y,w,h) in faces:
+            cv2.rectangle(gray,(x,y),(x+w,y+h),(255,0,0),2)
+
+            feats_extract(gray[y:y + h, x:x + w],loaded_model,device)
+            #cv2.imshow("Prova",gray[y:y + h, x:x + w])
+        #cv2.imshow('frame',gray)
         
-        
-        
-        cv2.imshow('frame',gray)
+            
 
         # Press Q on keyboard to stop recording
         if cv2.waitKey(1) & 0xFF == ord('q'):
